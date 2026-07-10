@@ -10,13 +10,14 @@ const UserSchema = {
   },
   rowId: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     field: 'row_id',
     unique: true
   },
   username:{
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   name: {
     type: DataTypes.STRING,
@@ -29,6 +30,18 @@ const UserSchema = {
   role: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  permissions: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  status: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  co: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   createdAt: {
     type: DataTypes.DATE,

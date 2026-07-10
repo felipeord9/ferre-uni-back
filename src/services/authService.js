@@ -8,6 +8,8 @@ const { config } = require('../config/config')
 const getUser = async (email, password) => {
   const user = await UserService.findByUsername(email)
 
+  if(user.status !== 'activo') throw boom.unauthorized()
+
   const isMatch = await bcrypt.compare(password, user.password)
 
   if (!isMatch) throw boom.unauthorized()

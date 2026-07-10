@@ -48,11 +48,12 @@ const updateUser = async (req, res, next) => {
     const { params: { id }, body } = req
     const data = await UserService.update(id, body)
 
-    res.json(200).json({
+    res.status(200).json({
       message: 'Updated',
       data
     })
   } catch (error) {
+    console.log(error)
     next(error)
   }
 }
@@ -71,10 +72,26 @@ const deleteUser = async (req, res, next) => {
   }
 }
 
+const deleteByUsername = async (req, res, next) => {
+  try {
+    const { params: { username }} = req
+    const data = await UserService.removeByUsername(username)
+
+    res.status(200).json({
+      message: 'Deleted',
+      data
+    })
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+} 
+
 module.exports = {
   findAllUsers,
   findOneUser,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  deleteByUsername,
 };
