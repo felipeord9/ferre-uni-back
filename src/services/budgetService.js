@@ -5,6 +5,29 @@ const find = () => {
   return budgets
 }
 
+const findByYear = (anio) => {
+  const budgets = models.Budget.findAll({
+    where: {
+      anio
+    }
+  })
+  return budgets
+}
+
+const findMultiple = (anio, mes, co) => {
+  const budget = models.Budget.findOne({
+    where: {
+      anio: anio,
+      mes: mes,
+      co: co
+    }
+  })
+  
+  if(!budget) throw boom.notFound('Budget no encontrado')
+
+  return budget
+}
+
 const create = async (body) =>{
   const newBudget = models.Budget.create(body)
   return newBudget
@@ -34,6 +57,8 @@ const remove = async (id) => {
 module.exports = {
   find,
   findOne,
+  findByYear,
+  findMultiple,
   create,
   update,
   remove,

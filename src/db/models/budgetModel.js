@@ -15,15 +15,40 @@ const BudgetSchema = {
       is: /^\d{3}$/
     }
   },
+  descripCo: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'descrip_co',
+  },
+  codlinea: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'cod_linea',
+  },
+  descripLinea: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'descrip_linea',
+  },
+  idVendedor: {
+    type: DataTypes.BIGINT,
+    allowNull: false,
+    field: 'id_vendedor',
+  },
+  rzsVendedor: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'rzs_vendedor',
+  },
   mes: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  año: {
+  anio: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  valor: {
+  monto: {
     type: DataTypes.BIGINT,
     allowNull: false
   }

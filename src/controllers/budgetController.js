@@ -13,6 +13,20 @@ const findAllBudgets = async (req, res, next) => {
   }
 }
 
+const findBudgetsByYear = async (req, res, next) => {
+  try {
+    const { params: { anio } } = req;
+    const data = await BudgetService.findByYear(anio)
+    
+    res.status(200).json({
+      status: 'OK',
+      data
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
 const findOneBudget = async (req, res, next) => {
   try {
     const { params: { id } } = req;
@@ -43,6 +57,32 @@ const createBudget = async ( req , res , next ) => {
   }
 }
 
+const createMultiple = async ( req , res , next ) => {
+  try{
+    const { body } = req
+    console.log(body)
+    for(let budget of body) {
+      await BudgetService.create({
+        co: budget.co,
+        descripCo: budget.descripCo,
+        codlinea: budget.codlinea,
+        descripLinea: budget.descripLinea,
+        idVendedor: budget.idVendedor,
+        rzsVendedor: budget.rzsVendedor,
+        mes: budget.mes,
+        anio: budget.anio,
+        monto: budget.monto === '' ? 0 : budget.monto
+      })
+    }
+    res.status(201).json({
+      message: 'Created'
+    })
+  } catch (error) {
+    console.log(error.message)
+    next(error)
+  }
+}
+
 const updateBudget = async (req, res, next) => {
   try {
     const { params: { id }, body } = req
@@ -53,6 +93,27 @@ const updateBudget = async (req, res, next) => {
       data
     })
   } catch (error) {
+    next(error)
+  }
+}
+
+const updateMultiple = async (req, res, next) => {
+  try {
+    const { body } = req
+    console.log(body)
+    for(let budget of body) {
+      const look = await BudgetService.findMultiple(budget.anio.toString(), budget.mes, budget.co)
+      await look.update({
+        monto: budget.monto === '' ? 0 : budget.monto
+      })
+    }
+
+    res.json(200).json({
+      message: 'Updated',
+      data
+    })
+  } catch (error) {
+    console.log(error)
     next(error)
   }
 }
@@ -74,7 +135,10 @@ const deleteBudget = async (req, res, next) => {
 module.exports = {
   findAllBudgets,
   findOneBudget,
+  findBudgetsByYear,
   createBudget,
+  createMultiple,
   updateBudget,
+  updateMultiple,
   deleteBudget,
 }
