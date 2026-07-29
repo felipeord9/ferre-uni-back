@@ -9,6 +9,7 @@ router
     .get("/year/:anio", budgetController.findBudgetsByYear)
     .post('/',budgetController.createBudget)
     .post('/multiple',budgetController.createMultiple)
+    .post('/replace',budgetController.replaceBudget)
     .patch('/', budgetController.updateMultiple)
     .patch('/:id', budgetController.updateBudget)
     .delete('/:id', budgetController.deleteBudget)

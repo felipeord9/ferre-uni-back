@@ -4,6 +4,7 @@ const { Budget, BudgetSchema } = require('./budgetModel')
 const { RecordBudget, RecordBudgetSchema } = require('./recordBudgetModel')
 const { Sales, SalesSchema } = require('./salesModel')
 const { RecordSales, RecordSalesSchema } = require('./recordSalesModel')
+const { Margin, MarginSchema } = require('./marginModel')
 
 function setupModels(sequelize) {
   User.init(UserSchema, User.config(sequelize))
@@ -12,6 +13,7 @@ function setupModels(sequelize) {
   RecordBudget.init(RecordBudgetSchema, RecordBudget.config(sequelize))
   Sales.init(SalesSchema, Sales.config(sequelize))
   RecordSales.init(RecordSalesSchema, RecordSales.config(sequelize))
+  Margin.init(MarginSchema, Margin.config(sequelize))
 
   User.associate(sequelize.models)
   Agency.associate(sequelize.models)
@@ -19,6 +21,7 @@ function setupModels(sequelize) {
   RecordBudget.associate(sequelize.models)
   Sales.associate(sequelize.models)
   RecordSales.associate(sequelize.models)
+  Margin.associate(sequelize.models)
 
 }
 

@@ -1,8 +1,8 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 
-const BUDGET_TABLE = 'budget'
+const MARGIN_TABLE = 'margin'
 
-const BudgetSchema = {
+const MarginSchema = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -15,31 +15,26 @@ const BudgetSchema = {
       is: /^\d{3}$/
     }
   },
-  descripLinea: {
+  budget: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'descrip_linea',
   },
-  rzsVendedor: {
+  expectedMargin: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'rzs_vendedor',
+    field: 'expected_margin',
   },
   mes: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   anio: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
-  monto: {
-    type: DataTypes.BIGINT,
-    allowNull: false
-  }
 }
 
-class Budget extends Model {
+class Margin extends Model {
   static associate(models) {
     //
   }
@@ -47,15 +42,15 @@ class Budget extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: BUDGET_TABLE,
-      modelName: 'Budget',
+      tableName: MARGIN_TABLE,
+      modelName: 'Margin',
       timestamps: false
     }
   }
 }
 
 module.exports = {
-  BUDGET_TABLE,
-  BudgetSchema,
-  Budget
+  MARGIN_TABLE,
+  MarginSchema,
+  Margin
 }

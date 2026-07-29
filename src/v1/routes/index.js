@@ -6,6 +6,7 @@ const BudgetRoutes = require('./budgetRoutes')
 const RecordBudgetRoutes = require('./recordBudgetRoutes')
 const SalesRoutes = require('./salesRoutes')
 const RecordSalesRoutes = require('./recordSalesRoutes')
+const MarginRoutes = require('./marginRoutes')
 
 function routerApi(app) {
     const router = express.Router()
@@ -19,6 +20,7 @@ function routerApi(app) {
     router.use('/record/budget', RecordBudgetRoutes)
     router.use('/sales', SalesRoutes)
     router.use('/record/sales', RecordSalesRoutes)
+    router.use('/margin', MarginRoutes)
 
 }
 
