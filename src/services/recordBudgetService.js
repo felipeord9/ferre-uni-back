@@ -1,7 +1,9 @@
 const { models } = require('../libs/sequelize')
 
 const find = () => {
-  const records = models.RecordBudget.findAll()
+  const records = models.RecordBudget.findAll({
+    order: [["id", "DESC"]],
+  })
   return records
 }
 

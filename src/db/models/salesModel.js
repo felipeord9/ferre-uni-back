@@ -26,7 +26,7 @@ const SalesSchema = {
     field: 'num_document',
   },
   date: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: false,
   },
   subtotal: {
@@ -36,13 +36,17 @@ const SalesSchema = {
   noVendedor: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'noVendedor',
     field: 'id_seller',
   },
   vendedor: {
     type: DataTypes.STRING,
     allowNull: false,
     field: 'seller',
+  },
+  proveedor: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'supplier',
   },
   linea: {
     type: DataTypes.STRING,
@@ -88,6 +92,16 @@ const SalesSchema = {
     type: DataTypes.FLOAT,
     allowNull: false
   },
+  idListPrice: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    field: 'id_list_price'
+  },
+  descLp: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'description_list_price'
+  }
 }
 
 class Sales extends Model {

@@ -7,6 +7,8 @@ router
     .get('/', salesController.findAllSales)
     .get("/:id", salesController.findOneSale)
     .post('/',salesController.createSale)
+    .post('/multiple',salesController.createMultiple)
+    .post('/replace',salesController.replaceSales)
     .patch('/:id', salesController.updateSale)
     .delete('/:id', salesController.deleteSale)
 

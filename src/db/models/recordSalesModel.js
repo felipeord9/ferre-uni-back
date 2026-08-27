@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 
-const RECORD_SALES_TABLE = 'RecordSales'
+const RECORD_SALES_TABLE = 'recordSales'
 
 const RecordSalesSchema = {
   id: {
@@ -10,7 +10,8 @@ const RecordSalesSchema = {
   },
   date: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    field: 'upload_date',
   },
   uploadBy: {
     type: DataTypes.STRING,
@@ -24,6 +25,10 @@ const RecordSalesSchema = {
   mode: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  observations: {
+    type: DataTypes.TEXT,
+    allowNull: true
   },
 }
 

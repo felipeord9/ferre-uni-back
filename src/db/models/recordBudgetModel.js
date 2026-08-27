@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 
-const RECORD_BUDGET_TABLE = 'RecordBudget'
+const RECORD_BUDGET_TABLE = 'recordBudget'
 
 const RecordBudgetSchema = {
   id: {
@@ -10,7 +10,8 @@ const RecordBudgetSchema = {
   },
   date: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    field: 'upload_date',
   },
   uploadBy: {
     type: DataTypes.STRING,
@@ -24,6 +25,10 @@ const RecordBudgetSchema = {
   mode: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  observations: {
+    type: DataTypes.TEXT,
+    allowNull: true
   },
 }
 
