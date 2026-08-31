@@ -89,6 +89,7 @@ const createMultiple = async ( req , res , next ) => {
       message: 'Created'
     })
   } catch (error) {
+    console.log(error)
     console.log(error.message)
     next(error)
   }
@@ -152,6 +153,7 @@ const replaceSales = async (req, res, next) => {
   } catch (error) {
     // 6. Si ocurre cualquier error, revertimos el borrado y la inserción
     await transaction.rollback();
+    console.log(error)
     console.error('Error en replaceSales:', error.message);
     next(error);
   }
